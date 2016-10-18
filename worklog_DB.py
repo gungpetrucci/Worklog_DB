@@ -98,15 +98,25 @@ def search_menu():
         print('Search by [E]mployee, [T]ext, [P]attern, [M]inute spent, [D]ate of entry')
         answer = input('Or [Q]uit to main menu: ').lower()
         if answer == 't':
-            search_text()
+            navigate_list = search_text()
+            if navigate_list:
+                display_entry(navigate_list)
         elif answer == 'm':
-            search_minute()
+            navigate_list = search_minute()
+            if navigate_list:
+                display_entry(navigate_list)
         elif answer == 'p':
-            search_pattern()
+            navigate_list = search_pattern()
+            if navigate_list:
+                display_entry(navigate_list)
         elif answer == 'd':
-            search_date()
+            navigate_list = search_date()
+            if navigate_list:
+                display_entry(navigate_list)
         elif answer == 'e':
-            search_employee()
+            navigate_list = search_employee()
+            if navigate_list:
+                display_entry(navigate_list)
         elif answer == 'q':
             valid_answer = True
         else:
@@ -145,7 +155,8 @@ def search_employee():
         time.sleep(1.5)
         clear()
     else:
-        display_entry(navigate_list)
+        return navigate_list
+
 
         
 
@@ -180,7 +191,7 @@ def search_text():
         time.sleep(1.5)
         clear()
     else:
-        display_entry(navigate_list)
+        return navigate_list
 
 
 def search_pattern():
@@ -218,7 +229,7 @@ def search_pattern():
         time.sleep(1.5)
         clear()
     else:
-        display_entry(navigate_list)
+        return navigate_list
         
 
 def search_date():
@@ -255,7 +266,7 @@ def search_date():
         time.sleep(1.5)
         clear()
     else:
-        display_entry(navigate_list)
+        return navigate_list
 
 
 def search_minute():
@@ -292,14 +303,14 @@ def search_minute():
         time.sleep(1.5)
         clear()
     else:
-        display_entry(navigate_list)
+        return navigate_list
 
     
 def display_entry(navigate_list):
 
     navigate = True
     navigate_index = 0
-    
+
     while navigate == True:
         clear()
         print('Displaying entry {}/{}'.format(navigate_index + 1, len(navigate_list)))
